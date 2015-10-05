@@ -1,0 +1,167 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="thumbnail-viewer">
+    <template>
+        <style>
+            .thumbnailImage {
+                max-width: 110px;
+                max-height: 100px;
+                min-width: 110px;
+                min-height: 100px;
+            }
+
+            .memeCanvas {
+                border: 10px solid #f0f0f0;
+                padding: 10px;
+                width: 80%;
+                height: 30%;
+                margin: 0 auto;
+                background: url("/paoloMemesPolymer/img/paolo/creeperPaolo.jpg") no-repeat;
+                background-size:100%;
+            }
+
+            .photos {
+                overflow: hidden;
+                border: 10px solid #f0f0f0;
+                padding: 10px;
+                width: 400px;
+                margin: 0 auto;
+            }
+
+            .photos ul.thumbs {
+                margin: 0;
+                padding: 0 0 0 10px;
+                list-style: none;
+                width: 390px;
+                float: left;
+            }
+
+            .photos ul.thumbs li {
+                width: 110px;
+                height: 100px;
+                margin: 0 10px 0 0;
+                padding: 0;
+                float: left;
+                overflow: hidden;
+                position: relative;
+                border: 5px solid #ddd;
+                text-align: center;
+            }
+
+            .photos ul.thumbs li:hover {
+                border: 5px solid #888;
+                -moz-opacity: .75;
+                filter: alpha(opacity=75);
+                opacity: .75;
+            }
+        </style>
+
+        <!-- The selected photo to be edited -->
+        <canvas id="memeCanvas" class="memeCanvas">
+            <img id="scumbagHatIcon" class="canvasIcon" src="/paoloMemesPolymer/img/icons/scumbagHatIcon.jpg" />
+        </canvas>
+
+        <div class="photos">
+            <div>
+                <ul class="thumbs">
+                    <template is="dom-repeat" items="{{images}}">
+                        <li>
+                            <img id='{{item.imageNumber}}' class='thumbnailImage' src="{{item.source}}"
+                                 on-click="selectThumbnail"/>
+
+                            <div class="titleBox">{{item.title}}</div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+
+    </template>
+
+    <script>
+        Polymer({
+            is: "thumbnail-viewer",
+            properties: {
+                imagefolder: {
+                    type: String,
+                    value: '/paoloMemesPolymer/img/paolo/'
+                }
+
+            },
+            ready: function () {
+                this.populateThumbNails();
+
+            },
+            attached: function () {
+
+            },
+
+            populateThumbNails: function () {
+
+                //Create a list of our images
+                this.images = [
+                    {
+                        source: '/paoloMemesPolymer/img/paolo/creeperPaolo.jpg',
+                        title: 'Creeper Paolo',
+                        imageNumber: 1
+                    },
+                    {
+                        source: '/paoloMemesPolymer/img/paolo/duckFacePaolo.jpg',
+                        title: 'Duck Face Paolo',
+                        imageNumber: 2
+                    },
+                    {
+                        source: '/paoloMemesPolymer/img/paolo/getItOffPaolo.jpg',
+                        title: 'Get It Off Paolo',
+                        imageNumber: 3
+                    },
+                    {
+                        source: '/paoloMemesPolymer/img/paolo/mexicanPaolo.jpg',
+                        title: 'Meccican Paolo',
+                        imageNumber: 4
+                    },
+                    {
+                        source: '/paoloMemesPolymer/img/paolo/obsessedPaolo.jpg',
+                        title: 'Obsessed Paolo',
+                        imageNumber: 5
+                    },
+                    {
+                        source: '/paoloMemesPolymer/img/paolo/omgPaolo.jpg',
+                        title: 'OMG Paolo',
+                        imageNumber: 6
+                    },
+                    {
+                        source: '/paoloMemesPolymer/img/paolo/pacmanPaolo.jpg',
+                        title: 'Pac-Man Paolo',
+                        imageNumber: 7
+                    },
+                    {
+                        source: '/paoloMemesPolymer/img/paolo/scumbagPaoloTemplate.jpg',
+                        title: 'Scumbag Paolo',
+                        imageNumber: 8
+                    },
+                    {
+                        source: '/paoloMemesPolymer/img/paolo/trollPaolo.jpg',
+                        title: 'Troll Paolo',
+                        imageNumber: 9
+                    },
+                    {
+                        source: '/paoloMemesPolymer/img/paolo/wellActuallyPaolo.jpg',
+                        title: 'Well Actually Paolo',
+                        imageNumber: 10
+                    }
+                ];
+            },
+
+            selectThumbnail: function (e) {
+
+                //Grab the URL from the element that was clicked (in the source property)
+                var imageURL = 'url(' + e.model.item.source + ')';
+
+                //Assign the image url the the canvas background so they are start to do the sweet sweet editing
+                document.getElementById("memeCanvas").style.backgroundImage = imageURL;
+            }
+        });
+    </script>
+
+</dom-module>

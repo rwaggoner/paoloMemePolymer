@@ -1,0 +1,20 @@
+{
+  "name": "paoloMemesPolymer",
+  "version": "0.0.1",
+  "authors": [
+    "Ryan Waggoner <ryan.waggoner@infusionsoft.com>"
+  ],
+  "description": "Paolo Meme Generator",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.1.3"
+  }
+}

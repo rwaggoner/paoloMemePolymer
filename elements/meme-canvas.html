@@ -1,0 +1,67 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="meme-canvas">
+    <template>
+        <style>
+
+            .memeCanvas {
+                border: 10px solid #f0f0f0;
+                padding: 10px;
+                width: 80%;
+                height: 30%;
+                margin: 0 auto;
+                background-size:100%;
+            }
+
+        </style>
+
+        <!-- The selected photo to be edited -->
+        <canvas id="memeCanvas" class="memeCanvas">
+        </canvas>
+
+
+    </template>
+
+    <script>
+        Polymer({
+            is: "meme-canvas",
+            properties: {
+            },
+            ready: function () {
+
+            },
+            attached: function () {
+                this.drawImageOnCanvas();
+            },
+
+            drawImageOnCanvas: function (e) {
+
+                //Grab the canvas we will draw on
+                var canvas = document.getElementById("memeCanvas");
+                var context = canvas.getContext('2d');
+                var imageObj = new Image();
+
+                imageObj.onload = function() {
+
+                    // draw cropped image
+                    var sourceX = 0;
+                    var sourceY = 0;
+                    var sourceWidth = 500;
+                    var sourceHeight = 500;
+                    var destWidth = 300;
+                    var destHeight = 300;
+                    var destX = canvas.width / 2 - destWidth;
+                    var destY = canvas.height / 2 - destHeight;
+
+
+                    context.drawImage(imageObj, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+                }
+
+                //Load up the image object
+                imageObj.src = '/paoloMemesPolymer/img/paolo/omgPaolo.jpg';
+
+            }
+        });
+    </script>
+
+</dom-module>

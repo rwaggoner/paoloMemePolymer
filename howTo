@@ -1,0 +1,10 @@
+1. Install Node.js - https://nodejs.org/en/
+2. Install bower - npm install -g bower - http://bower.io/
+3. Navigate to diectory where project will be held
+4. Create your project directory - mkdir paoloMemesPolymer
+5. Install your project with bower - bower init
+6. Enter throught he bower prompts, first few will require some input, can enter through the rest
+6a. Enter index.html as the main file
+7. Install polymer - bower install --save Polymer/polymer
+8. Open up your project with your favorite editor
+9. Add an index.html file to the project root
