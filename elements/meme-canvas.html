@@ -1,4 +1,4 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../external/polymer/polymer.html">
 
 <dom-module id="meme-canvas">
     <template>
@@ -18,8 +18,6 @@
         <!-- The selected photo to be edited -->
         <canvas id="memeCanvas" class="memeCanvas">
         </canvas>
-
-
     </template>
 
     <script>
@@ -55,7 +53,7 @@
 
 
                     context.drawImage(imageObj, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
-                }
+                };
 
                 //Load up the image object
                 imageObj.src = '/paoloMemesPolymer/img/paolo/omgPaolo.jpg';

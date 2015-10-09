@@ -1,0 +1,45 @@
+<link rel="import" href="../external/polymer/polymer.html">
+
+<link rel="import" href="canadian-behavior.html"/>
+
+<dom-module id="yael-stuff">
+    <template>
+        <style>
+            .yaelClass {
+                background-color: pink;
+            }
+        </style>
+        <div class="yaelClass">
+            <span>Hello</span>
+            <span>[[ yourName ]]</span>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: "yael-stuff",
+
+            behaviors: [YaelBehaviors.CanadianBehavior],
+
+            properties: {
+                yourName: {
+                    type: String,
+                    value: ""
+                }
+            },
+
+            ready: function () {
+                this.yourName = this.yourName + " Scumbag";
+
+                this.sayEh(this.yourName);
+            },
+
+            sayEh: function(word) {
+                this.yourName = word + " EhhH??";
+            }
+
+
+
+        });
+    </script>
+</dom-module>
